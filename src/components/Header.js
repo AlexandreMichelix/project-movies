@@ -8,7 +8,7 @@ const Header = () => {
                 <nav>
                     <ul>
                         <NavLink to="/" className={(nav) => nav.isActive ? "nav-active" : ""}><li>Accueil</li></NavLink>
-                        <NavLink to="/Favoris" className={(nav) => nav.isActive ? "nav-active" : ""}><li>Favoris</li></NavLink>
+                        <NavLink to="/favorites" className={(nav) => nav.isActive ? "nav-active" : ""}><li>Favoris</li></NavLink>
                     </ul>
                 </nav>
                 <h1>React Movies</h1>
