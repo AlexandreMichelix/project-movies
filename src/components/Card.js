@@ -75,12 +75,22 @@ const Card = ({ movie }) => {
   };
 
   const addStorage = () => {
-    let storedData = window.localStorage.movies ? window.localStorage.movies.split(",") : [];
+    let storedData = window.localStorage.movies
+      ? window.localStorage.movies.split(",")
+      : [];
 
-    if (storedData.includes(movie.id.toString())){
-        storedData.push(movie.id);
-        window.localStorage.movies = storedData;
+    if (!storedData.includes(movie.id.toString())) {
+      storedData.push(movie.id);
+      window.localStorage.movies = storedData;
     }
+  };
+
+  const deleteStorage = () => {
+    let storedData = window.localStorage.movies.split(",");
+
+    let newData = storedData.filter((id) => id != movie.id);
+
+    window.localStorage.movies = newData;
   };
 
   return (
@@ -113,7 +123,21 @@ const Card = ({ movie }) => {
       {movie.overview ? <h3>Synopsis</h3> : ""}
       <p>{movie.overview}</p>
 
-      <div className="btn" onClick={() => addStorage()}>Ajouter aux favoris</div>
+      {movie.genre_ids ? (
+        <div className="btn" onClick={() => addStorage()}>
+          Ajouter aux favoris
+        </div>
+      ) : (
+        <div
+          className="btn"
+          onClick={() => {
+            deleteStorage();
+            window.location.reload();
+          }}
+        >
+          Supprimer de la liste
+        </div>
+      )}
     </div>
   );
 };

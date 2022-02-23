@@ -11,10 +11,12 @@ const UserList = () => {
       ? window.localStorage.movies.split(",")
       : [];
 
+      console.log(moviesId);
+
     for (let i = 0; i < moviesId.length; i++) {
       axios
         .get(
-          `https://api.themoviedb.org/3/movie/${moviesId[i]}?api_key=edc914e05ded85fa9c4da95db5d306de&language=en-US&external_source=imdb_id`
+          `https://api.themoviedb.org/3/movie/${moviesId[i]}?api_key=edc914e05ded85fa9c4da95db5d306de&language=fr-FR`
         )
         .then((res) => setListData((listData) => [...listData, res.data]));
     }
