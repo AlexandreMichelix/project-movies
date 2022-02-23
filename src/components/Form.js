@@ -8,7 +8,7 @@ const Form = () => {
   useEffect(() => {
     axios
       .get(
-        "https://api.themoviedb.org/3/search/movie?api_key=edc914e05ded85fa9c4da95db5d306de&query=star&language=fr-FR"
+        "https://api.themoviedb.org/3/search/movie?api_key=edc914e05ded85fa9c4da95db5d306de&query=avenger&language=fr-FR"
       )
       .then((res) => setMoviesData(res.data.results));
   }, []);
@@ -35,7 +35,7 @@ const Form = () => {
       </div>
       <div className="result">
         {moviesData.slice(0, 12).map((movie) => (
-          <Card key={movie.id} />
+          <Card key={movie.id} movie={movie} />
         ))}
       </div>
     </div>
